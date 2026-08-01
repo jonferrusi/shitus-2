@@ -1,11 +1,12 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { RESTAURANT } from '../data/content.js';
+import logoWhite from '../assets/photos/logo-white.png';
 
+// TODO: swap in real social links once available.
 const SOCIALS = [
   { label: 'Instagram', href: '#', icon: InstagramIcon },
   { label: 'Facebook', href: '#', icon: FacebookIcon },
-  { label: 'TikTok', href: '#', icon: TiktokIcon },
 ];
 
 export default function Footer() {
@@ -23,10 +24,11 @@ export default function Footer() {
     <footer className="bg-charcoal-950 border-t border-charcoal-800 pt-16 pb-8">
       <div className="mx-auto max-w-7xl px-6 grid md:grid-cols-3 gap-12">
         <div>
-          <p className="font-display text-2xl text-cream mb-3">
-            Pelham St. <span className="text-amber-500">Grill</span>
+          <img src={logoWhite} alt={RESTAURANT.name} className="h-9 w-auto mb-4" />
+          <p className="text-cream/60 text-sm leading-relaxed mb-1">{RESTAURANT.address}</p>
+          <p className="text-cream/60 text-sm leading-relaxed mb-5">
+            {RESTAURANT.phone} &middot; {RESTAURANT.email}
           </p>
-          <p className="text-cream/60 text-sm leading-relaxed mb-5">{RESTAURANT.address}</p>
           <div className="flex gap-4">
             {SOCIALS.map(({ label, href, icon: Icon }) => (
               <motion.a
@@ -46,10 +48,16 @@ export default function Footer() {
         <div>
           <p className="uppercase tracking-wider text-sm text-cream/80 mb-4">Quick Links</p>
           <ul className="space-y-2 text-cream/60 text-sm">
-            {['Menu', 'About', 'Gallery', 'Location', 'Reservations'].map((l) => (
-              <li key={l}>
-                <a href={`#${l.toLowerCase()}`} className="hover:text-amber-400 transition-colors">
-                  {l}
+            {[
+              { label: 'Menu', href: '#menu' },
+              { label: 'About', href: '#about' },
+              { label: 'Gallery', href: '#gallery' },
+              { label: 'Location', href: '#location' },
+              { label: 'Visit Us', href: '#reservations' },
+            ].map((l) => (
+              <li key={l.href}>
+                <a href={l.href} className="hover:text-amber-400 transition-colors">
+                  {l.label}
                 </a>
               </li>
             ))}
@@ -119,7 +127,7 @@ export default function Footer() {
       </div>
 
       <div className="mx-auto max-w-7xl px-6 mt-12 pt-6 border-t border-charcoal-800 text-center text-xs text-cream/40">
-        &copy; {new Date().getFullYear()} Pelham St. Grill. All rights reserved.
+        &copy; {new Date().getFullYear()} {RESTAURANT.name}. All rights reserved.
       </div>
     </footer>
   );

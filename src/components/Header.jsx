@@ -1,13 +1,14 @@
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { RESTAURANT } from '../data/content.js';
+import logoWhite from '../assets/photos/logo-white.png';
 
 const LINKS = [
   { href: '#menu', label: 'Menu' },
   { href: '#about', label: 'About' },
   { href: '#gallery', label: 'Gallery' },
   { href: '#location', label: 'Location' },
-  { href: '#reservations', label: 'Reservations' },
+  { href: '#reservations', label: 'Visit Us' },
 ];
 
 export default function Header() {
@@ -28,8 +29,8 @@ export default function Header() {
       }`}
     >
       <div className="mx-auto max-w-7xl px-5 sm:px-8 flex items-center justify-between h-16 md:h-20">
-        <a href="#top" className="font-display text-2xl md:text-3xl tracking-wide text-cream">
-          Pelham St. <span className="text-amber-500">Grill</span>
+        <a href="#top" className="flex items-center">
+          <img src={logoWhite} alt={RESTAURANT.name} className="h-8 md:h-10 w-auto" />
         </a>
 
         <nav className="hidden md:flex items-center gap-8 font-sans text-sm uppercase tracking-wider text-cream/80">
@@ -41,10 +42,10 @@ export default function Header() {
         </nav>
 
         <a
-          href="#reservations"
+          href={RESTAURANT.phoneHref}
           className="hidden md:inline-block bg-amber-600 hover:bg-amber-500 text-charcoal-950 font-semibold text-sm uppercase tracking-wider px-5 py-2.5 rounded-sm transition-colors"
         >
-          Reserve a Table
+          Call {RESTAURANT.phone}
         </a>
 
         <button
@@ -74,14 +75,11 @@ export default function Header() {
                 </a>
               ))}
               <a
-                href="#reservations"
+                href={RESTAURANT.phoneHref}
                 onClick={() => setMenuOpen(false)}
                 className="bg-amber-600 text-charcoal-950 font-semibold text-center px-5 py-3 rounded-sm"
               >
-                Reserve a Table
-              </a>
-              <a href={RESTAURANT.phoneHref} className="text-amber-400">
-                {RESTAURANT.phone}
+                Call {RESTAURANT.phone}
               </a>
             </div>
           </motion.nav>

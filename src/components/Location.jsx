@@ -17,6 +17,14 @@ function getEasternNow() {
   return { day: weekdayIndex, hour: Number(map.hour), minute: Number(map.minute) };
 }
 
+function formatHour(h) {
+  const wholeHour = Math.floor(h);
+  const hour12 = wholeHour % 12 === 0 ? 12 : wholeHour % 12;
+  const suffix = wholeHour >= 12 ? 'PM' : 'AM';
+  const minutes = h % 1 === 0.5 ? ':30' : '';
+  return `${hour12}${minutes}${suffix}`;
+}
+
 function useOpenStatus() {
   const [status, setStatus] = useState(() => computeStatus());
 
@@ -25,8 +33,9 @@ function useOpenStatus() {
     const decimalHour = hour + minute / 60;
     const today = HOURS[day];
 
-    if (today.open !== null && decimalHour >= today.open && decimalHour < today.close) {
-      return { open: true, label: `Open until ${formatHour(today.close)}` };
+    const openRange = today.ranges.find((r) => decimalHour >= r[0] && decimalHour < r[1]);
+    if (openRange) {
+      return { open: true, label: `Open until ${formatHour(openRange[1])}` };
     }
     return { open: false, label: nextOpenLabel(day, decimalHour) };
   }
@@ -35,22 +44,13 @@ function useOpenStatus() {
     for (let offset = 0; offset < 8; offset++) {
       const idx = (day + offset) % 7;
       const entry = HOURS[idx];
-      if (entry.open === null) continue;
-      if (offset === 0 && decimalHour >= entry.close) continue;
-      if (offset === 0 && decimalHour < entry.open) {
-        return `Opens today at ${formatHour(entry.open)}`;
-      }
-      if (offset > 0) {
-        return `Opens ${entry.day} at ${formatHour(entry.open)}`;
-      }
+      const upcoming = entry.ranges.find((r) => offset > 0 || decimalHour < r[0]);
+      if (!upcoming) continue;
+      if (offset === 0) return `Opens today at ${formatHour(upcoming[0])}`;
+      if (offset === 1) return `Opens tomorrow at ${formatHour(upcoming[0])}`;
+      return `Opens ${entry.day} at ${formatHour(upcoming[0])}`;
     }
     return 'Closed';
-  }
-
-  function formatHour(h) {
-    const hour12 = h % 12 === 0 ? 12 : h % 12;
-    const suffix = h >= 12 ? 'PM' : 'AM';
-    return `${hour12}${suffix}`;
   }
 
   useEffect(() => {
@@ -107,29 +107,38 @@ export default function Location() {
               <PhoneIcon />
               {RESTAURANT.phone}
             </a>
+            <a
+              href={`mailto:${RESTAURANT.email}`}
+              className="flex items-center gap-3 text-cream/80 hover:text-amber-400 transition-colors"
+            >
+              <MailIcon />
+              {RESTAURANT.email}
+            </a>
           </div>
 
           <table className="w-full text-sm">
             <tbody>
               {HOURS.map((h) => (
                 <tr key={h.day} className="border-b border-charcoal-700/60 last:border-0">
-                  <td className="py-2.5 text-cream/70">{h.day}</td>
+                  <td className="py-2.5 text-cream/70 align-top">{h.day}</td>
                   <td className="py-2.5 text-right text-cream/90">
-                    {h.open === null ? 'Closed' : `${fmt(h.open)} – ${fmt(h.close)}`}
+                    {h.ranges.length === 0
+                      ? 'Closed'
+                      : h.ranges.map((r) => `${formatHour(r[0])} – ${formatHour(r[1])}`).join(', ')}
                   </td>
                 </tr>
               ))}
             </tbody>
           </table>
           <p className="text-xs text-cream/40 mt-4">
-            Free lot parking available behind the building, entrance off Pelham St.
+            Friday evenings: Fish &amp; Chips, dine-in and take-out, 4:30PM – 8PM.
           </p>
         </Reveal>
 
         <Reveal delay={0.15} className="relative">
           <div className="relative h-[420px] lg:h-[560px] rounded-sm overflow-hidden border border-charcoal-700/60">
             <iframe
-              title="Pelham St. Grill location map"
+              title="The Pelham Street Grille location map"
               src={RESTAURANT.mapEmbedSrc}
               className="absolute inset-0 h-full w-full grayscale-[0.3] contrast-125"
               loading="lazy"
@@ -149,12 +158,6 @@ export default function Location() {
       </div>
     </section>
   );
-}
-
-function fmt(h) {
-  const hour12 = h % 12 === 0 ? 12 : h % 12;
-  const suffix = h >= 12 ? 'PM' : 'AM';
-  return `${hour12}${suffix}`;
 }
 
 function PinIcon({ large = false }) {
@@ -182,6 +185,19 @@ function PhoneIcon() {
         fill="currentColor"
         d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.5.6 3.6.1.3 0 .7-.2 1l-2.3 2.2Z"
       />
+    </svg>
+  );
+}
+
+function MailIcon() {
+  return (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" className="shrink-0 text-amber-500">
+      <path
+        stroke="currentColor"
+        strokeWidth="1.8"
+        d="M4 6h16v12H4V6Z"
+      />
+      <path stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" d="m4 7 8 6 8-6" />
     </svg>
   );
 }

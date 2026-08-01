@@ -1,7 +1,7 @@
 {
-  "name": "pelham-st-grill",
+  "name": "pelham-street-grille",
   "version": "1.0.0",
-  "description": "Website for Pelham St. Grill — 1507 Pelham St, Fonthill, ON L0S 1E3",
+  "description": "Website for The Pelham Street Grille — 1507 Pelham Street, Fonthill, ON L0S 1E0",
   "private": true,
   "type": "module",
   "scripts": {

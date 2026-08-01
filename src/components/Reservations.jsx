@@ -16,13 +16,14 @@ export default function Reservations() {
       <div className="absolute inset-0 bg-gradient-to-b from-ember-600/10 via-transparent to-transparent pointer-events-none" />
       <div className="relative mx-auto max-w-3xl px-6 text-center">
         <Reveal>
-          <p className="uppercase tracking-[0.3em] text-amber-400 text-xs mb-4">Join Us</p>
+          <p className="uppercase tracking-[0.3em] text-amber-400 text-xs mb-4">Prime Rib Night</p>
           <h2 className="font-display text-4xl sm:text-5xl text-cream mb-4">
-            Reserve Your <span className="text-amber-500">Table</span>
+            Join Us the <span className="text-amber-500">Last Saturday</span>
           </h2>
           <p className="text-cream/70 mb-10 max-w-xl mx-auto">
-            Book directly below, or reserve through OpenTable. Ordering pickup or delivery?
-            Use the button underneath the form.
+            Every last Saturday of the month we serve a prime rib dinner — a Fonthill favourite.
+            Reservations are required and tables go quickly. For any other visit, we're always
+            happy to seat walk-ins.
           </p>
         </Reveal>
 
@@ -36,7 +37,7 @@ export default function Reservations() {
               <p className="font-serif text-2xl text-amber-400 mb-2">Request received!</p>
               <p className="text-cream/70">
                 We&rsquo;ll confirm your table by phone or email shortly. Thanks for choosing
-                Pelham St. Grill.
+                The Pelham Street Grille.
               </p>
             </motion.div>
           ) : (
@@ -63,25 +64,18 @@ export default function Reservations() {
 
         <Reveal delay={0.2} className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
           <a
-            href="#"
-            className="border border-cream/30 hover:border-amber-400 hover:text-amber-400 text-cream uppercase tracking-wider text-sm px-7 py-3 rounded-sm transition-colors"
+            href={RESTAURANT.phoneHref}
+            className="bg-amber-600 hover:bg-amber-500 text-charcoal-950 font-semibold uppercase tracking-wider text-sm px-7 py-3 rounded-sm transition-colors"
           >
-            Book via OpenTable
+            Call {RESTAURANT.phone}
           </a>
           <a
-            href="#"
-            className="bg-charcoal-800 hover:bg-charcoal-700 text-cream uppercase tracking-wider text-sm px-7 py-3 rounded-sm transition-colors"
+            href={`mailto:${RESTAURANT.email}`}
+            className="border border-cream/30 hover:border-amber-400 hover:text-amber-400 text-cream uppercase tracking-wider text-sm px-7 py-3 rounded-sm transition-colors"
           >
-            Order Online
+            Email Us
           </a>
         </Reveal>
-
-        <p className="text-cream/50 text-sm mt-8">
-          Prefer to call? Reach us at{' '}
-          <a href={RESTAURANT.phoneHref} className="text-amber-400">
-            {RESTAURANT.phone}
-          </a>
-        </p>
       </div>
     </section>
   );

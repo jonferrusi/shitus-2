@@ -1,92 +1,91 @@
+import heroInterior from '../assets/photos/hero-homepage.jpg';
+import meal from '../assets/photos/meal.jpg';
+import eggsBenedict from '../assets/photos/breakfast.jpg';
+import perogies from '../assets/photos/dinner.jpg';
+import fishAndChips from '../assets/photos/fish-and-chips.jpg';
+
+export const PHOTOS = { heroInterior, meal, eggsBenedict, perogies, fishAndChips };
+
 export const RESTAURANT = {
-  name: 'Pelham St. Grill',
-  tagline: 'Fire. Flavor. Fonthill.',
-  phone: '(905) 555-0142',
-  phoneHref: 'tel:+19055550142',
-  address: '1507 Pelham St, Fonthill, ON L0S 1E3',
-  mapsHref: 'https://www.google.com/maps/search/?api=1&query=1507+Pelham+St+Fonthill+ON+L0S+1E3',
-  appleMapsHref: 'https://maps.apple.com/?q=1507+Pelham+St,+Fonthill,+ON+L0S+1E3',
+  name: 'The Pelham Street Grille',
+  shortName: 'Pelham Street Grille',
+  tagline: 'A Little Taste of Home',
+  phone: '(289) 897-9191',
+  phoneHref: 'tel:+12898979191',
+  email: 'pelhamstreetgrille@gmail.com',
+  address: '1507 Pelham Street, Fonthill, ON L0S 1E0',
+  mapsHref: 'https://www.google.com/maps/search/?api=1&query=1507+Pelham+Street+Fonthill+ON+L0S+1E0',
+  appleMapsHref: 'https://maps.apple.com/?q=1507+Pelham+Street,+Fonthill,+ON+L0S+1E0',
   mapEmbedSrc:
-    'https://www.google.com/maps?q=1507+Pelham+St,+Fonthill,+ON+L0S+1E3&output=embed',
+    'https://www.google.com/maps?q=1507+Pelham+Street,+Fonthill,+ON+L0S+1E0&output=embed',
 };
 
-// 0 = Sunday .. 6 = Saturday. `close` of 24 means "midnight".
+// 0 = Sunday .. 6 = Saturday. Each day has one or more [open, close] ranges
+// in 24h decimal hours; an empty array means closed.
 export const HOURS = [
-  { day: 'Sunday', open: 11, close: 21 },
-  { day: 'Monday', open: null, close: null },
-  { day: 'Tuesday', open: 16, close: 22 },
-  { day: 'Wednesday', open: 16, close: 22 },
-  { day: 'Thursday', open: 16, close: 22 },
-  { day: 'Friday', open: 11, close: 23 },
-  { day: 'Saturday', open: 11, close: 23 },
+  { day: 'Sunday', ranges: [[8, 15]] },
+  { day: 'Monday', ranges: [[8, 15]] },
+  { day: 'Tuesday', ranges: [[8, 15]] },
+  { day: 'Wednesday', ranges: [[8, 15]] },
+  { day: 'Thursday', ranges: [[8, 15]] },
+  { day: 'Friday', ranges: [[8, 15], [16.5, 20]] },
+  { day: 'Saturday', ranges: [[8, 15]] },
 ];
 
 export const GALLERY_IMAGES = [
   {
-    src: 'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=900&q=70',
-    alt: 'Steak searing over open flame',
+    src: heroInterior,
+    alt: 'Warm, cozy dining room at The Pelham Street Grille',
     tall: true,
   },
   {
-    src: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=900&q=70',
-    alt: 'Plated ribeye with charred vegetables',
+    src: meal,
+    alt: 'Classic breakfast plate: two eggs, bacon, home fries, toast and fresh fruit',
   },
   {
-    src: 'https://images.unsplash.com/photo-1466721591366-2d5fba72006d?auto=format&fit=crop&w=900&q=70',
-    alt: 'Warm dining room interior',
+    src: eggsBenedict,
+    alt: 'Eggs Benedict with home fries and a fresh orange slice',
   },
   {
-    src: 'https://images.unsplash.com/photo-1552566626-52f8b828add9?auto=format&fit=crop&w=900&q=70',
-    alt: 'Grilled burger close up',
+    src: perogies,
+    alt: 'Loaded homemade perogies with bacon, peppers and a side salad',
     tall: true,
   },
   {
-    src: 'https://images.unsplash.com/photo-1600891964599-f61ba0e24092?auto=format&fit=crop&w=900&q=70',
-    alt: 'Chef plating a dish',
-  },
-  {
-    src: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=900&q=70',
-    alt: 'Cocktails on the bar',
-  },
-  {
-    src: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=900&q=70',
-    alt: 'Restaurant exterior at dusk',
-    tall: true,
-  },
-  {
-    src: 'https://images.unsplash.com/photo-1541014741259-de529411b96a?auto=format&fit=crop&w=900&q=70',
-    alt: 'Dessert plate with torched sugar',
+    src: fishAndChips,
+    alt: 'Friday Fish & Chips with coleslaw and tartar sauce',
   },
 ];
 
 export const TESTIMONIALS = [
   {
-    name: 'Jordan M.',
+    name: 'Local Regular',
     rating: 5,
     quote:
-      'The ribeye was cooked exactly to temp and the smoke flavor was incredible. Best steak I’ve had in the Niagara region.',
+      'Feels like eating at grandma’s table. The all-day breakfast is the real deal and the staff remember your order.',
   },
   {
-    name: 'Priya S.',
+    name: 'Sunday Regular',
     rating: 5,
     quote:
-      'Cozy but still feels upscale. The smoked old fashioned alone is worth the drive to Fonthill.',
+      'Best Eggs Benedict in Niagara, hands down. Portions are huge and everything tastes homemade.',
   },
   {
-    name: 'Dave K.',
-    rating: 4,
-    quote: 'Great BBQ chicken, generous portions, and the staff remembered our anniversary booking.',
-  },
-  {
-    name: 'Alicia R.',
+    name: 'Friday Regular',
     rating: 5,
-    quote: 'The charred corn elote might be the best appetizer I’ve had all year. Can’t wait to go back.',
+    quote: 'We plan our Fridays around their fish & chips. Fresh haddock, crispy batter, never greasy.',
+  },
+  {
+    name: 'Prime Rib Night Regular',
+    rating: 5,
+    quote:
+      'The last-Saturday prime rib dinner is a Fonthill tradition for our family now. Book early, it fills up.',
   },
 ];
 
-export const CHEF_STATS = [
-  { label: 'Years Open', value: 8 },
-  { label: 'Dishes Served', value: 240000, suffix: '+' },
-  { label: 'Hand-Cut Steaks Weekly', value: 500, suffix: '+' },
-  { label: 'Local Farm Partners', value: 12 },
+export const HIGHLIGHTS = [
+  { label: 'Family Owned & Operated', detail: 'Serving downtown Fonthill for years, one home-cooked plate at a time.' },
+  { label: 'All-Day Breakfast', detail: 'A local favourite — breakfast served every day we’re open, 8AM to 3PM.' },
+  { label: 'Vegan Menu Available', detail: 'Dedicated vegan breakfast and lunch options, not an afterthought.' },
+  { label: 'Prime Rib Night', detail: 'The last Saturday of every month. Reservations required — it fills up fast.' },
 ];

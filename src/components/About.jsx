@@ -1,30 +1,5 @@
-import { useEffect, useRef, useState } from 'react';
-import { motion, useInView, animate } from 'framer-motion';
 import Reveal from './Reveal.jsx';
-import { CHEF_STATS } from '../data/content.js';
-
-function Counter({ value, suffix = '' }) {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, amount: 0.6 });
-  const [display, setDisplay] = useState(0);
-
-  useEffect(() => {
-    if (!inView) return;
-    const controls = animate(0, value, {
-      duration: 1.8,
-      ease: 'easeOut',
-      onUpdate: (v) => setDisplay(Math.floor(v)),
-    });
-    return () => controls.stop();
-  }, [inView, value]);
-
-  return (
-    <span ref={ref}>
-      {display.toLocaleString()}
-      {suffix}
-    </span>
-  );
-}
+import { HIGHLIGHTS, PHOTOS } from '../data/content.js';
 
 export default function About() {
   return (
@@ -32,8 +7,8 @@ export default function About() {
       <div className="mx-auto max-w-6xl px-6 grid md:grid-cols-2 gap-14 items-center">
         <Reveal>
           <img
-            src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1000&q=75"
-            alt="Pelham St. Grill dining room"
+            src={PHOTOS.meal}
+            alt="Classic breakfast plate at The Pelham Street Grille"
             className="rounded-sm shadow-2xl shadow-black/50 w-full h-[420px] object-cover"
             loading="lazy"
           />
@@ -42,25 +17,23 @@ export default function About() {
         <Reveal delay={0.15}>
           <p className="uppercase tracking-[0.3em] text-amber-400 text-xs mb-4">Our Story</p>
           <h2 className="font-display text-4xl sm:text-5xl mb-6 text-cream">
-            Open Flame, <span className="text-amber-500">Honest Food</span>
+            A Little Taste of <span className="text-amber-500">Home</span>
           </h2>
           <p className="text-cream/75 leading-relaxed mb-4">
-            Pelham St. Grill opened its doors in Fonthill with one idea: cook everything the way
-            it's meant to be cooked — over real fire. Our chefs hand-select cuts, char vegetables
-            until they blister, and build a menu around what the grill does best.
+            We're a family owned and operated restaurant in downtown Fonthill, and we take pride
+            in everything we cook and serve. Our award-winning breakfasts and lunches are made to
+            order, from scratch, the way home cooking should be.
           </p>
           <p className="text-cream/75 leading-relaxed mb-10">
-            From weeknight dinners to celebrations, the room is built to feel like your kitchen —
-            just with better smoke.
+            Our all-day breakfast is a favourite with locals and anyone passing through. Come in,
+            relax, and enjoy!
           </p>
 
-          <div className="grid grid-cols-2 gap-6">
-            {CHEF_STATS.map((s) => (
-              <div key={s.label}>
-                <p className="font-display text-4xl text-amber-500">
-                  <Counter value={s.value} suffix={s.suffix ?? ''} />
-                </p>
-                <p className="text-sm text-cream/60 uppercase tracking-wider mt-1">{s.label}</p>
+          <div className="grid sm:grid-cols-2 gap-5">
+            {HIGHLIGHTS.map((h) => (
+              <div key={h.label} className="border-l-2 border-amber-500 pl-4">
+                <p className="font-serif text-cream text-base">{h.label}</p>
+                <p className="text-sm text-cream/60 mt-1 leading-relaxed">{h.detail}</p>
               </div>
             ))}
           </div>
