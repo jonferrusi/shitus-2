@@ -38,3 +38,25 @@ npm run preview  # preview the production build
 - `RESTAURANT.mapEmbedSrc` in `src/data/content.js` currently geocodes the
   address by search query; swap in a place-ID embed URL once the business has
   a verified Google Business listing
+
+## Deploying (GitHub Pages)
+
+A workflow at `.github/workflows/deploy.yml` builds and deploys the site on
+every push to `main`. One-time setup:
+
+1. In the repo on GitHub: **Settings → Pages → Build and deployment → Source**,
+   select **GitHub Actions**.
+2. Push to `main` (or re-run the workflow from the **Actions** tab) — the site
+   publishes to `https://<your-github-username>.github.io/shitus-2/`.
+
+### Using a custom domain
+
+1. Add a `public/CNAME` file containing just your domain, e.g. `pelhamstgrill.com`
+   (this also flips the build's base path from `/shitus-2/` to `/` automatically —
+   see `vite.config.js`).
+2. At your domain registrar, point the domain at GitHub Pages: an `A` record
+   for the apex domain to GitHub's Pages IPs, or a `CNAME` record for a `www`
+   subdomain to `<your-github-username>.github.io`. Exact records:
+   https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site
+3. In **Settings → Pages**, enter the custom domain and enable **Enforce HTTPS**
+   once DNS propagates.
