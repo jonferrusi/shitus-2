@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { RESTAURANT } from '../data/content.js';
-import logoWhite from '../assets/photos/logo-white.png';
+import logoBlack from '../assets/photos/logo-black.png';
 
 // TODO: swap in real social links once available.
 const SOCIALS = [
@@ -21,12 +21,12 @@ export default function Footer() {
   }
 
   return (
-    <footer className="bg-charcoal-950 border-t border-charcoal-800 pt-16 pb-8">
+    <footer className="bg-cream-100 border-t border-charcoal-200 pt-16 pb-8">
       <div className="mx-auto max-w-7xl px-6 grid md:grid-cols-3 gap-12">
         <div>
-          <img src={logoWhite} alt={RESTAURANT.name} className="h-9 w-auto mb-4" />
-          <p className="text-cream/60 text-sm leading-relaxed mb-1">{RESTAURANT.address}</p>
-          <p className="text-cream/60 text-sm leading-relaxed mb-5">
+          <img src={logoBlack} alt={RESTAURANT.name} className="h-9 w-auto mb-4" />
+          <p className="text-charcoal-600 text-sm leading-relaxed mb-1">{RESTAURANT.address}</p>
+          <p className="text-charcoal-600 text-sm leading-relaxed mb-5">
             {RESTAURANT.phone} &middot; {RESTAURANT.email}
           </p>
           <div className="flex gap-4">
@@ -37,7 +37,7 @@ export default function Footer() {
                 aria-label={label}
                 whileHover={{ y: -4 }}
                 transition={{ type: 'spring', stiffness: 400, damping: 12 }}
-                className="h-10 w-10 flex items-center justify-center rounded-full border border-charcoal-700 text-cream/70 hover:text-amber-400 hover:border-amber-500 transition-colors"
+                className="h-10 w-10 flex items-center justify-center rounded-full border border-charcoal-300 text-charcoal-600 hover:text-amber-700 hover:border-amber-500 transition-colors"
               >
                 <Icon />
               </motion.a>
@@ -46,8 +46,8 @@ export default function Footer() {
         </div>
 
         <div>
-          <p className="uppercase tracking-wider text-sm text-cream/80 mb-4">Quick Links</p>
-          <ul className="space-y-2 text-cream/60 text-sm">
+          <p className="uppercase tracking-wider text-sm text-charcoal-800 mb-4">Quick Links</p>
+          <ul className="space-y-2 text-charcoal-600 text-sm">
             {[
               { label: 'Menu', href: '#menu' },
               { label: 'About', href: '#about' },
@@ -56,7 +56,7 @@ export default function Footer() {
               { label: 'Visit Us', href: '#reservations' },
             ].map((l) => (
               <li key={l.href}>
-                <a href={l.href} className="hover:text-amber-400 transition-colors">
+                <a href={l.href} className="hover:text-amber-700 transition-colors">
                   {l.label}
                 </a>
               </li>
@@ -65,8 +65,8 @@ export default function Footer() {
         </div>
 
         <div>
-          <p className="uppercase tracking-wider text-sm text-cream/80 mb-4">Stay in the Loop</p>
-          <p className="text-cream/60 text-sm mb-4">
+          <p className="uppercase tracking-wider text-sm text-charcoal-800 mb-4">Stay in the Loop</p>
+          <p className="text-charcoal-600 text-sm mb-4">
             Specials, events, and new menu drops — straight to your inbox.
           </p>
           <AnimatePresence mode="wait">
@@ -75,7 +75,7 @@ export default function Footer() {
                 key="done"
                 initial={{ opacity: 0, y: 6 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="flex items-center gap-2 text-amber-400 text-sm"
+                className="flex items-center gap-2 text-amber-700 text-sm"
               >
                 <motion.svg
                   width="20"
@@ -112,11 +112,11 @@ export default function Footer() {
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="you@email.com"
-                  className="flex-1 min-w-0 bg-charcoal-900 border border-charcoal-700 focus:border-amber-500 outline-none rounded-sm px-3.5 py-2.5 text-sm text-cream placeholder:text-cream/30"
+                  className="flex-1 min-w-0 bg-white border border-charcoal-200 focus:border-amber-500 outline-none rounded-sm px-3.5 py-2.5 text-sm text-charcoal-900 placeholder:text-charcoal-400"
                 />
                 <button
                   type="submit"
-                  className="bg-amber-600 hover:bg-amber-500 text-charcoal-950 font-semibold text-sm px-4 rounded-sm transition-colors shrink-0"
+                  className="bg-amber-600 hover:bg-amber-500 text-cream font-semibold text-sm px-4 rounded-sm transition-colors shrink-0"
                 >
                   Join
                 </button>
@@ -126,7 +126,7 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="mx-auto max-w-7xl px-6 mt-12 pt-6 border-t border-charcoal-800 text-center text-xs text-cream/40">
+      <div className="mx-auto max-w-7xl px-6 mt-12 pt-6 border-t border-charcoal-200 text-center text-xs text-charcoal-500">
         &copy; {new Date().getFullYear()} {RESTAURANT.name}. All rights reserved.
       </div>
     </footer>

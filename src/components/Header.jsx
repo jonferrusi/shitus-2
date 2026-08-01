@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { RESTAURANT } from '../data/content.js';
-import logoWhite from '../assets/photos/logo-white.png';
+import logoBlack from '../assets/photos/logo-black.png';
 
 const LINKS = [
   { href: '#menu', label: 'Menu' },
@@ -24,18 +24,18 @@ export default function Header() {
 
   return (
     <header
-      className={`fixed top-0 inset-x-0 z-50 transition-colors duration-500 ${
-        scrolled ? 'bg-charcoal-950/90 backdrop-blur-md shadow-lg shadow-black/40' : 'bg-transparent'
+      className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${
+        scrolled ? 'bg-cream/95 backdrop-blur-md shadow-md shadow-charcoal-900/5' : 'bg-cream/70 backdrop-blur-sm'
       }`}
     >
       <div className="mx-auto max-w-7xl px-5 sm:px-8 flex items-center justify-between h-16 md:h-20">
         <a href="#top" className="flex items-center">
-          <img src={logoWhite} alt={RESTAURANT.name} className="h-8 md:h-10 w-auto" />
+          <img src={logoBlack} alt={RESTAURANT.name} className="h-8 md:h-10 w-auto" />
         </a>
 
-        <nav className="hidden md:flex items-center gap-8 font-sans text-sm uppercase tracking-wider text-cream/80">
+        <nav className="hidden md:flex items-center gap-8 font-sans text-sm uppercase tracking-wider text-charcoal-700">
           {LINKS.map((l) => (
-            <a key={l.href} href={l.href} className="hover:text-amber-400 transition-colors">
+            <a key={l.href} href={l.href} className="hover:text-amber-600 transition-colors">
               {l.label}
             </a>
           ))}
@@ -43,19 +43,19 @@ export default function Header() {
 
         <a
           href={RESTAURANT.phoneHref}
-          className="hidden md:inline-block bg-amber-600 hover:bg-amber-500 text-charcoal-950 font-semibold text-sm uppercase tracking-wider px-5 py-2.5 rounded-sm transition-colors"
+          className="hidden md:inline-block bg-amber-600 hover:bg-amber-500 text-cream font-semibold text-sm uppercase tracking-wider px-5 py-2.5 rounded-sm transition-colors"
         >
           Call {RESTAURANT.phone}
         </a>
 
         <button
           aria-label="Toggle menu"
-          className="md:hidden text-cream p-2"
+          className="md:hidden text-charcoal-800 p-2"
           onClick={() => setMenuOpen((o) => !o)}
         >
-          <span className="block w-6 h-0.5 bg-cream mb-1.5" />
-          <span className="block w-6 h-0.5 bg-cream mb-1.5" />
-          <span className="block w-6 h-0.5 bg-cream" />
+          <span className="block w-6 h-0.5 bg-charcoal-800 mb-1.5" />
+          <span className="block w-6 h-0.5 bg-charcoal-800 mb-1.5" />
+          <span className="block w-6 h-0.5 bg-charcoal-800" />
         </button>
       </div>
 
@@ -66,9 +66,9 @@ export default function Header() {
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="md:hidden overflow-hidden bg-charcoal-950/95 backdrop-blur-md"
+            className="md:hidden overflow-hidden bg-cream/98 backdrop-blur-md border-t border-charcoal-200"
           >
-            <div className="flex flex-col px-5 pb-6 pt-2 gap-4 font-sans uppercase tracking-wider text-cream/90">
+            <div className="flex flex-col px-5 pb-6 pt-2 gap-4 font-sans uppercase tracking-wider text-charcoal-800">
               {LINKS.map((l) => (
                 <a key={l.href} href={l.href} onClick={() => setMenuOpen(false)}>
                   {l.label}
@@ -77,7 +77,7 @@ export default function Header() {
               <a
                 href={RESTAURANT.phoneHref}
                 onClick={() => setMenuOpen(false)}
-                className="bg-amber-600 text-charcoal-950 font-semibold text-center px-5 py-3 rounded-sm"
+                className="bg-amber-600 text-cream font-semibold text-center px-5 py-3 rounded-sm"
               >
                 Call {RESTAURANT.phone}
               </a>

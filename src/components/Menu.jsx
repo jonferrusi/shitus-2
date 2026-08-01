@@ -10,14 +10,14 @@ export default function Menu() {
   const items = useMemo(() => MENU_ITEMS.filter((i) => i.category === active), [active]);
 
   return (
-    <section id="menu" className="relative bg-charcoal-950 py-24 md:py-32">
+    <section id="menu" className="relative bg-cream py-24 md:py-32">
       <div className="mx-auto max-w-5xl px-6">
         <Reveal className="text-center max-w-2xl mx-auto mb-14">
-          <p className="uppercase tracking-[0.3em] text-amber-400 text-xs mb-4">The Menu</p>
-          <h2 className="font-display text-4xl sm:text-5xl text-cream mb-4">
-            Home-Cooked, <span className="text-amber-500">Every Day</span>
+          <p className="uppercase tracking-[0.3em] text-amber-600 text-xs mb-4">The Menu</p>
+          <h2 className="font-display text-4xl sm:text-5xl text-charcoal-900 mb-4">
+            Home-Cooked, <span className="text-amber-600">Every Day</span>
           </h2>
-          <p className="text-cream/70">
+          <p className="text-charcoal-600">
             Breakfast served all day, every day. Full menu below — ask your server about daily
             specials.
           </p>
@@ -30,8 +30,8 @@ export default function Menu() {
               onClick={() => setActive(c)}
               className={`px-4 py-2 rounded-full text-xs sm:text-sm uppercase tracking-wider border transition-colors ${
                 active === c
-                  ? 'bg-amber-600 border-amber-600 text-charcoal-950 font-semibold'
-                  : 'border-cream/25 text-cream/70 hover:border-amber-400 hover:text-amber-400'
+                  ? 'bg-amber-600 border-amber-600 text-cream font-semibold'
+                  : 'border-charcoal-300 text-charcoal-600 hover:border-amber-500 hover:text-amber-700'
               }`}
             >
               {c}
@@ -49,16 +49,16 @@ export default function Menu() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -8 }}
                 transition={{ duration: 0.35, delay: i * 0.03 }}
-                className="border-b border-charcoal-700/60 pb-4"
+                className="border-b border-charcoal-200 pb-4"
               >
                 <div className="flex items-baseline justify-between gap-4">
-                  <h3 className="font-serif text-lg text-cream">{item.name}</h3>
-                  <span className="font-display text-amber-500 text-base shrink-0 whitespace-nowrap">
+                  <h3 className="font-serif text-lg text-charcoal-900">{item.name}</h3>
+                  <span className="font-display text-amber-700 text-base shrink-0 whitespace-nowrap">
                     {item.price}
                   </span>
                 </div>
                 {item.description && (
-                  <p className="text-sm text-cream/60 leading-relaxed mt-1">{item.description}</p>
+                  <p className="text-sm text-charcoal-600 leading-relaxed mt-1">{item.description}</p>
                 )}
               </motion.article>
             ))}
@@ -66,12 +66,12 @@ export default function Menu() {
         </motion.div>
 
         <Reveal className="text-center mt-14">
-          <p className="text-cream/60 text-sm mb-4">
+          <p className="text-charcoal-500 text-sm mb-4">
             Dine-in &amp; take-out. Prices subject to change without notice.
           </p>
           <a
             href={RESTAURANT.phoneHref}
-            className="inline-block border border-cream/30 hover:border-amber-400 hover:text-amber-400 text-cream uppercase tracking-wider text-sm px-7 py-3 rounded-sm transition-colors"
+            className="inline-block border border-charcoal-300 hover:border-amber-500 hover:text-amber-700 text-charcoal-800 uppercase tracking-wider text-sm px-7 py-3 rounded-sm transition-colors"
           >
             Call to Order Ahead
           </a>

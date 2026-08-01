@@ -11,7 +11,7 @@ import StickyCTA from './components/StickyCTA.jsx';
 
 export default function App() {
   return (
-    <div className="min-h-screen bg-charcoal-950">
+    <div className="min-h-screen bg-cream">
       <Header />
       <main>
         <Hero />

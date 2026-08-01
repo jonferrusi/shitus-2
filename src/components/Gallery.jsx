@@ -28,12 +28,12 @@ export default function Gallery() {
   }, [openIndex, close, next, prev]);
 
   return (
-    <section id="gallery" className="relative bg-charcoal-900 py-24 md:py-32">
+    <section id="gallery" className="relative bg-cream-100 py-24 md:py-32">
       <div className="mx-auto max-w-7xl px-6">
         <Reveal className="text-center max-w-2xl mx-auto mb-14">
-          <p className="uppercase tracking-[0.3em] text-amber-400 text-xs mb-4">Gallery</p>
-          <h2 className="font-display text-4xl sm:text-5xl text-cream">
-            A Taste of the <span className="text-amber-500">Room</span>
+          <p className="uppercase tracking-[0.3em] text-amber-600 text-xs mb-4">Gallery</p>
+          <h2 className="font-display text-4xl sm:text-5xl text-charcoal-900">
+            A Taste of the <span className="text-amber-600">Room</span>
           </h2>
         </Reveal>
 

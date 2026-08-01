@@ -65,12 +65,12 @@ export default function Location() {
   const status = useOpenStatus();
 
   return (
-    <section id="location" className="relative bg-charcoal-950 py-24 md:py-32">
+    <section id="location" className="relative bg-cream py-24 md:py-32">
       <div className="mx-auto max-w-7xl px-6 grid lg:grid-cols-2 gap-12 items-start">
         <Reveal>
-          <p className="uppercase tracking-[0.3em] text-amber-400 text-xs mb-4">Find Us</p>
-          <h2 className="font-display text-4xl sm:text-5xl text-cream mb-6">
-            Visit <span className="text-amber-500">Fonthill</span>
+          <p className="uppercase tracking-[0.3em] text-amber-600 text-xs mb-4">Find Us</p>
+          <h2 className="font-display text-4xl sm:text-5xl text-charcoal-900 mb-6">
+            Visit <span className="text-amber-600">Fonthill</span>
           </h2>
 
           <div className="flex items-center gap-3 mb-8">
@@ -79,10 +79,10 @@ export default function Location() {
                 status.open ? 'bg-green-500 animate-pulse' : 'bg-ember-500'
               }`}
             />
-            <span className={`font-semibold uppercase tracking-wide text-sm ${status.open ? 'text-green-400' : 'text-ember-500'}`}>
+            <span className={`font-semibold uppercase tracking-wide text-sm ${status.open ? 'text-green-600' : 'text-ember-600'}`}>
               {status.open ? "We're open now" : "We're closed"}
             </span>
-            <span className="text-cream/60 text-sm">&middot; {status.label}</span>
+            <span className="text-charcoal-500 text-sm">&middot; {status.label}</span>
           </div>
 
           <div className="space-y-5 mb-10">
@@ -90,26 +90,26 @@ export default function Location() {
               href={RESTAURANT.mapsHref}
               target="_blank"
               rel="noreferrer"
-              className="flex items-start gap-3 text-cream/80 hover:text-amber-400 transition-colors group"
+              className="flex items-start gap-3 text-charcoal-700 hover:text-amber-700 transition-colors group"
             >
               <PinIcon />
               <span>
                 {RESTAURANT.address}
-                <span className="block text-xs text-cream/50 group-hover:text-amber-400/80 mt-0.5">
+                <span className="block text-xs text-charcoal-500 group-hover:text-amber-600 mt-0.5">
                   Tap for directions (Google or Apple Maps)
                 </span>
               </span>
             </a>
             <a
               href={RESTAURANT.phoneHref}
-              className="flex items-center gap-3 text-cream/80 hover:text-amber-400 transition-colors"
+              className="flex items-center gap-3 text-charcoal-700 hover:text-amber-700 transition-colors"
             >
               <PhoneIcon />
               {RESTAURANT.phone}
             </a>
             <a
               href={`mailto:${RESTAURANT.email}`}
-              className="flex items-center gap-3 text-cream/80 hover:text-amber-400 transition-colors"
+              className="flex items-center gap-3 text-charcoal-700 hover:text-amber-700 transition-colors"
             >
               <MailIcon />
               {RESTAURANT.email}
@@ -119,9 +119,9 @@ export default function Location() {
           <table className="w-full text-sm">
             <tbody>
               {HOURS.map((h) => (
-                <tr key={h.day} className="border-b border-charcoal-700/60 last:border-0">
-                  <td className="py-2.5 text-cream/70 align-top">{h.day}</td>
-                  <td className="py-2.5 text-right text-cream/90">
+                <tr key={h.day} className="border-b border-charcoal-200 last:border-0">
+                  <td className="py-2.5 text-charcoal-600 align-top">{h.day}</td>
+                  <td className="py-2.5 text-right text-charcoal-800">
                     {h.ranges.length === 0
                       ? 'Closed'
                       : h.ranges.map((r) => `${formatHour(r[0])} – ${formatHour(r[1])}`).join(', ')}
@@ -130,13 +130,13 @@ export default function Location() {
               ))}
             </tbody>
           </table>
-          <p className="text-xs text-cream/40 mt-4">
+          <p className="text-xs text-charcoal-500 mt-4">
             Friday evenings: Fish &amp; Chips, dine-in and take-out, 4:30PM – 8PM.
           </p>
         </Reveal>
 
         <Reveal delay={0.15} className="relative">
-          <div className="relative h-[420px] lg:h-[560px] rounded-sm overflow-hidden border border-charcoal-700/60">
+          <div className="relative h-[420px] lg:h-[560px] rounded-sm overflow-hidden border border-charcoal-200 shadow-lg shadow-charcoal-900/5">
             <iframe
               title="The Pelham Street Grille location map"
               src={RESTAURANT.mapEmbedSrc}

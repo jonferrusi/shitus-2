@@ -14,11 +14,11 @@ export default function Testimonials() {
   const t = TESTIMONIALS[index];
 
   return (
-    <section className="relative bg-charcoal-900 py-24 md:py-28 overflow-hidden">
-      <div className="absolute inset-0 opacity-[0.04] bg-[radial-gradient(circle_at_50%_0%,#e8892b,transparent_60%)]" />
+    <section className="relative bg-white py-24 md:py-28 overflow-hidden">
+      <div className="absolute inset-0 opacity-[0.05] bg-[radial-gradient(circle_at_50%_0%,#e8892b,transparent_60%)]" />
       <div className="relative mx-auto max-w-3xl px-6 text-center">
         <Reveal>
-          <p className="uppercase tracking-[0.3em] text-amber-400 text-xs mb-8">What Guests Say</p>
+          <p className="uppercase tracking-[0.3em] text-amber-600 text-xs mb-8">What Guests Say</p>
         </Reveal>
 
         <div className="min-h-[220px] flex items-center justify-center">
@@ -37,16 +37,16 @@ export default function Testimonials() {
                     initial={{ opacity: 0, scale: 0.5 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ delay: 0.15 + i * 0.08 }}
-                    className={i < t.rating ? 'text-amber-500' : 'text-charcoal-700'}
+                    className={i < t.rating ? 'text-amber-500' : 'text-charcoal-200'}
                   >
                     ★
                   </motion.span>
                 ))}
               </div>
-              <p className="font-serif italic text-xl sm:text-2xl text-cream/90 leading-relaxed mb-6">
+              <p className="font-serif italic text-xl sm:text-2xl text-charcoal-800 leading-relaxed mb-6">
                 &ldquo;{t.quote}&rdquo;
               </p>
-              <p className="text-amber-400 uppercase tracking-wider text-sm">{t.name}</p>
+              <p className="text-amber-700 uppercase tracking-wider text-sm">{t.name}</p>
             </motion.div>
           </AnimatePresence>
         </div>
@@ -58,7 +58,7 @@ export default function Testimonials() {
               aria-label={`Show testimonial ${i + 1}`}
               onClick={() => setIndex(i)}
               className={`h-1.5 rounded-full transition-all ${
-                i === index ? 'w-6 bg-amber-500' : 'w-1.5 bg-cream/25 hover:bg-cream/50'
+                i === index ? 'w-6 bg-amber-500' : 'w-1.5 bg-charcoal-200 hover:bg-charcoal-300'
               }`}
             />
           ))}

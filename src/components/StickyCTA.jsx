@@ -21,7 +21,7 @@ export default function StickyCTA() {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 40 }}
           transition={{ duration: 0.35, ease: 'easeOut' }}
-          className="fixed bottom-6 right-6 z-50 bg-amber-600 hover:bg-amber-500 text-charcoal-950 font-semibold uppercase tracking-wider text-sm px-6 py-3.5 rounded-full shadow-lg shadow-black/40 animate-pulseGlow"
+          className="fixed bottom-6 right-6 z-50 bg-amber-600 hover:bg-amber-500 text-cream font-semibold uppercase tracking-wider text-sm px-6 py-3.5 rounded-full shadow-lg shadow-charcoal-900/20 animate-pulseGlow"
         >
           Call {RESTAURANT.phone}
         </motion.a>
