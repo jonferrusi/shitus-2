@@ -3,8 +3,20 @@ import meal from '../assets/photos/meal.jpg';
 import eggsBenedict from '../assets/photos/breakfast.jpg';
 import perogies from '../assets/photos/dinner.jpg';
 import fishAndChips from '../assets/photos/fish-and-chips.jpg';
+import chickenWrap from '../assets/photos/lunch.jpg';
+import burgerAndFries from '../assets/photos/dinner-plate.jpg';
+import omeletPlate from '../assets/photos/breakfast-alt.jpg';
 
-export const PHOTOS = { heroInterior, meal, eggsBenedict, perogies, fishAndChips };
+export const PHOTOS = {
+  heroInterior,
+  meal,
+  eggsBenedict,
+  perogies,
+  fishAndChips,
+  chickenWrap,
+  burgerAndFries,
+  omeletPlate,
+};
 
 export const RESTAURANT = {
   name: 'The Pelham Street Grille',
@@ -54,6 +66,19 @@ export const GALLERY_IMAGES = [
   {
     src: fishAndChips,
     alt: 'Friday Fish & Chips with coleslaw and tartar sauce',
+  },
+  {
+    src: chickenWrap,
+    alt: 'Chicken Caesar Wrap with a side garden salad',
+    tall: true,
+  },
+  {
+    src: burgerAndFries,
+    alt: 'Banquet Burger with bacon and cheddar, served with fries',
+  },
+  {
+    src: omeletPlate,
+    alt: 'Omelet with home fries, toast and a fresh orange slice',
   },
 ];
 
